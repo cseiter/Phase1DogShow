@@ -38,9 +38,7 @@ function getDogs() {
     .then(r => r.json())
 }
 
-function createDogTable (dogObj) {
-    const tableContainer = document.getElementById('table-body');
-    testDogsArray.forEach(dogObj => {
+function createDogRow (dogObj) {
     const trDog = document.createElement('tr'),
         tdName = document.createElement('td'),
         tdBreed = document.createElement('td'),
@@ -51,9 +49,15 @@ function createDogTable (dogObj) {
     tdSex.innerText = dogObj.sex;
     tdEdit.innerHTML = `<button id=${dogObj.id}>Edit</button>`
     trDog.append(tdName,tdBreed,tdSex,tdEdit);
-    tableContainer.appendChild(trDog);
+    return trDog;
+}
+
+function showDogs(dogsArray) {
+    const tableContainer = document.getElementById('table-body');
+    dogsArray.forEach(dogObj => {
+        constDogRow = createDogRow(dogObj);
+        tableContainer.appendChild(constDogRow);
     });
 }
 
-getDogs().then(console.log);
-createDogTable(testDog);
+getDogs().then(showDogs);
