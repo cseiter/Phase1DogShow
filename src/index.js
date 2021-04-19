@@ -48,10 +48,12 @@ function createDogTable (dogObj) {
     tdName.innerText = dogObj.name;
     tdBreed.innerText = dogObj.breed;
     tdSex.innerText = dogObj.sex;
-    tdEdit.innerText = "Edit";
-    tdEdit.id = dogObj.id;
+    tdEdit.innerHTML = `<button id=${dogObj.id}>Edit</button>`
+    //tdEdit.innerText = "Edit";
+    //tdEdit.id = dogObj.id;
     trDog.append(tdName,tdBreed,tdSex,tdEdit);
     tableContainer.appendChild(trDog);
+    console.log(tableContainer);
 }
 
 getDogs().then(console.log);
