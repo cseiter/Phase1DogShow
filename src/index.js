@@ -40,6 +40,7 @@ function getDogs() {
 
 function createDogTable (dogObj) {
     const tableContainer = document.getElementById('table-body');
+    testDogsArray.forEach(dogObj => {
     const trDog = document.createElement('tr'),
         tdName = document.createElement('td'),
         tdBreed = document.createElement('td'),
@@ -49,11 +50,9 @@ function createDogTable (dogObj) {
     tdBreed.innerText = dogObj.breed;
     tdSex.innerText = dogObj.sex;
     tdEdit.innerHTML = `<button id=${dogObj.id}>Edit</button>`
-    //tdEdit.innerText = "Edit";
-    //tdEdit.id = dogObj.id;
     trDog.append(tdName,tdBreed,tdSex,tdEdit);
     tableContainer.appendChild(trDog);
-    console.log(tableContainer);
+    });
 }
 
 getDogs().then(console.log);
